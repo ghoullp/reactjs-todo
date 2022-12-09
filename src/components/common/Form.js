@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { forwardRef} from 'react'
 
-const Form = ({ error, value, submit, onChange }) => {
+const Form = ({ error, value, submit, onChange }, ref) => {
   return (
     <form onSubmit={submit}>
       <div className='form-group row align-items-center'>
         <div className='col-9 pr-0'>
           <input
+            ref={ref}
             type='text'
             className='form-control-plaintext'
             placeholder='Add task'
@@ -24,4 +25,4 @@ const Form = ({ error, value, submit, onChange }) => {
   )
 }
 
-export default Form
+export default forwardRef(Form)

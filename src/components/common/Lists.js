@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from "react";
 import ListItem from './ListItem'
 
 const Lists = ({ todos, delHandler, doneHandler }) => {
@@ -30,4 +30,4 @@ const Lists = ({ todos, delHandler, doneHandler }) => {
   )
 }
 
-export default Lists
+export default memo(Lists);

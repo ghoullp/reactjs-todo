@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Homepage from "./components/home";
 
 const App = () => {
-  return <Homepage></Homepage>;
+  return <Homepage/>;
 };
 
 export default App;
