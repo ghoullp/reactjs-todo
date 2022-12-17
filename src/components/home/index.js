@@ -15,10 +15,6 @@ const Homepage = () => {
     if (storedTodos) setTodos(storedTodos)
   }, [])
 
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
-
   const submitHandler = useCallback(
     (e) => {
       e.preventDefault();
@@ -29,10 +25,14 @@ const Homepage = () => {
         return false;
       }
 
-      setTodos((oldTodos) => [
-        { id: Date.now(), title: todo, done: false },
-        ...oldTodos,
-      ]);
+      setTodos((oldTodos) => {
+        const set = [
+          { id: Date.now(), title: todo, done: false },
+          ...oldTodos,
+        ]
+        localStorage.setItem('todos', JSON.stringify(set));
+        return set;
+      });
 
       setTodo("");
       setError(null);
@@ -81,7 +81,7 @@ const Homepage = () => {
         value={todo}
         ref={inputEl}
         submit={submitHandler}
-        onChange={(e) => setTodo(e.target.value)}
+        onChange={setTodo}
       />
       <hr className='border-primary' />
       <Lists todos={todos} delHandler={delHandler} doneHandler={doneHandler} />

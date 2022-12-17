@@ -1,6 +1,9 @@
 import React, { forwardRef} from 'react'
 
 const Form = ({ error, value, submit, onChange }, ref) => {
+  const handleChange = (e) => {
+    onChange(e.target.value);
+  }
   return (
     <form onSubmit={submit}>
       <div className='form-group row align-items-center'>
@@ -11,7 +14,7 @@ const Form = ({ error, value, submit, onChange }, ref) => {
             className='form-control-plaintext'
             placeholder='Add task'
             value={value}
-            onChange={onChange}
+            onChange={handleChange}
           />
           {error && <small className='form-text text-danger'>{error}</small>}
         </div>
